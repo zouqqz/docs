@@ -19,12 +19,8 @@
           {
             "group": "快速开始",
             "pages": [
-              "api/quickstart"
+              "quickstart"
             ]
-          },
-          {
-            "group": "API 文档",
-            "openapi": "api/api.openapi.json"
           }
       
         ]
