@@ -1,0 +1,46 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "willow",
+  "name": "三三云文档",
+  "logo": {
+    "dark": "/logo/dark.svg",
+    "light": "/logo/light.svg"
+  },
+  "favicon": "/favicon.svg",
+  "colors": {
+     "primary": "#3b82f6"
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "API 文档",
+        "icon": "square-terminal",
+        "groups": [
+          {
+            "group": "快速开始",
+            "pages": [
+              "api/quickstart"
+            ]
+          },
+          {
+            "group": "API 文档",
+            "openapi": "api/api.openapi.json"
+          }
+      
+        ]
+      },
+      {
+        "tab": "使用指南",
+        "icon": "code",
+        "href": "https://alidocs.dingtalk.com/i/p/gBVzxNVxovbMmOao"
+      },
+      {
+        "tab": "更新记录",
+        "icon": "newspaper",
+        "pages": [
+              "changelog/changelog"
+            ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+---
+title: "使用 API 接口"
+---
+
+<Note> 调用 API 接口，需要先在三三平台上获取 token </Note>
+
+## 添加应用
+<Steps>
+  <Step title="创建应用">
+    进入 `系统` -> `北向 API` -> `API 管理`, 添加应用。 输入应用名称、过期时间等信息。 
+    
+    您可以添加多个应Note用，给每个应用分配不同的 API。
+
+    <Note>
+        “过期时间” 是指在过期时间时间之前，您可以通过该应用的 token 调用 API 接口。
+    </Note>
+  </Step>
+  <Step title="选择 API">
+    在 `API 管理` 的应用列表中， 点击应用，勾选右侧的 API， 可为应用添加 API。 如下图：
+
+    <Note>
+      在调用接口时，您只能通过应用的 token 访问您勾选过的 API。如果访问其它 API，将系统返回无权限
+    </Note>
+  </Step>
+  <Step title="查看 TOKEN"> 
+    在应用列表中，选择一条应用，点击 “显示 token”，可查看应用的 token。
+  </Step>
+</Steps>
+
+## 调用 API
+
+调用接口时将 token 填入 header 中的 Authentication，即可调用 API 接口。 其它参数请参考 API 文档。 
