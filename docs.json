@@ -21,6 +21,10 @@
             "pages": [
               "quickstart"
             ]
+          },
+          {
+            "group": "API 文档",
+            "openapi": "api/api.openapi.json"
           }
       
         ]
