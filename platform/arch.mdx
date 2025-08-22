@@ -1,0 +1,57 @@
+---
+title: "技术架构"
+---
+
+## 架构图
+
+![architecture.jpeg](/img/arch.jpeg)
+
+## 系统组件
+
+<Card title="设备服务" icon="wifi" horizontal>
+  负责设备管理接口、设备升级、参数配置
+</Card>
+
+<Card title="规则引擎" icon="flag" horizontal>
+  负责数据处理、计算、统计
+</Card>
+
+<Card title="告警服务" icon="siren" horizontal>
+  负责按告警规则派生告警
+</Card>
+
+<Card title="通知服务" icon="bell" horizontal>
+  负责发送通知
+</Card>
+
+<Card title="转发服务" icon="forward" horizontal>
+  负责处理对外部业务平台转发消息
+</Card>
+
+<Card title="微服务管理" icon="flag" horizontal>
+  统一管理各微服务，包括配置、部署、维护、授权。
+</Card>
+
+<Card title="API网关" icon="shield" horizontal>
+  统一的请求入口，对请求进行路由、负载均衡、安全防护、限流熔断等，并负责微服务的接口发布、服务认证
+</Card>
+
+<Card title="消息服务" icon="radio" horizontal>
+  MQTT 服务器，负责通过 A-Link 协议接入设备
+</Card>
+
+<Card title="消息总线" icon="flag" horizontal>
+  负责平台内部消息流转，消息分片等，优点是业务解耦、削峰填谷，充分调动服务资源协同。
+</Card>
+
+<Card title="数据库" icon="database" horizontal>
+  采用postgresql主从集群部署，灵活运用垂直分库水平分表，结合服务分片使用
+</Card>
+
+<Card title="缓存" icon="hard-drive" horizontal>
+  客户端缓存、redis高速缓存/集群，为系统层级中所有查询提供更高的响应
+</Card>
+
+<Card title="对象存储" icon="folder-open" horizontal>
+  oss云存储方式更方便更安全，支持文件分布式存储，故而数据容灾性更好，弹性扩容时不需要数据迁移等人工干预
+</Card>

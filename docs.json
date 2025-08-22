@@ -13,8 +13,14 @@
   "navigation": {
     "tabs": [
       {
+        "tab": "平台介绍",
+        "pages": [
+          "platform/info",
+          "platform/arch"
+        ]
+      },
+      {
         "tab": "API 文档",
-        "icon": "square-terminal",
         "groups": [
           {
             "group": "快速开始",
@@ -31,12 +37,10 @@
       },
       {
         "tab": "使用指南",
-        "icon": "code",
         "href": "https://alidocs.dingtalk.com/i/p/gBVzxNVxovbMmOao"
       },
       {
         "tab": "更新记录",
-        "icon": "newspaper",
         "pages": [
               "changelog/changelog"
             ]
