@@ -26,7 +26,7 @@
             "group": "HTTP API",
             "openapi": "api/api.openapi.json",
             "pages": [
-              "api/info"
+              "info"
             ]
           },
           {
