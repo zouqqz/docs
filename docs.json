@@ -23,14 +23,18 @@
         "tab": "API 文档",
         "groups": [
           {
-            "group": "快速开始",
+            "group": "HTTP API",
+            "openapi": "api/api.openapi.json",
             "pages": [
-              "quickstart"
+              "api/quickstart"
             ]
           },
           {
-            "group": "API 文档",
-            "openapi": "api/api.openapi.json"
+            "group": "转发 API",
+			      "pages": [
+			        "forward/quickstart",
+              "forward/detail"
+            ]
           }
       
         ]

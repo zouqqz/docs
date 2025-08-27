@@ -1,0 +1,279 @@
+---
+title: "转发信息"
+---
+
+## 转发API
+
+转发的业务类型有如下几种：
+
+ - sensor：传感量数据
+ - system：系统量数据
+ - login：设备登录事件
+ - logout：设备登出事件
+ - deviceCreate：设备创建事件
+ - deviceDelete：设备删除事件
+ - deviceUpdate：设备修改事件
+ - funcAck：设备控制响应
+
+
+
+转发的消息体示例如下：
+
+```json
+{
+    "msgType": "sensor",
+    "devid": "123456",
+    "from": "AIM8986ebad77f59250",
+    "sid": 8,
+    "data": {
+		"CPU": 0.56
+    },
+    "updateTime": "2025-05-19 11:41:51"
+    
+}
+```
+
+
+
+转发消息体属性说明
+
+| 属性       | 说明                                                         | 类型   | 必填 |
+| ---------- | ------------------------------------------------------------ | ------ | -------- |
+| msgType    | 业务类型                                                     | string | 是       |
+| devid      | 设备唯一标识                                                 | string | 是       |
+| from       | 区分传感器和网关，from不存在或者和devid相同则为网关，否则为传感器 | string | 否       |
+| sid        | 业务消息标识                                 | number | 否       |
+| data       | 业务数据                                   | obj    | 否       |
+| updateTime | 转发时间                                                     | string | 否       |
+| productCode| 设备产品编码                                                   | string | 否       |
+
+
+
+###  传感量
+
+主题
+
+
+ >  /sansan/data/forward/testdeveloper/testtenant
+
+
+
+消息体
+
+```json
+{
+	"data": {
+		"cpu": 2,
+		"mem": 9
+	},
+	"devid": "123456",
+	"from": "AIM8986ebad77f59250",
+	"msgType": "sensor",
+	"updateTime": "2025-05-19 11:41:51"
+}
+
+```
+
+
+
+### 系统量
+
+
+主题
+
+
+ >  /sansan/data/forward/testdeveloper/testtenant
+
+
+
+
+消息体
+
+
+```
+{
+	"data": {
+		"cpu": 2,
+		"mem": 9
+	},
+	"devid": "AIM8986ebad77f59250",
+	"from": "AIM8986ebad77f59250",
+	"msgType": "system",
+	"sn": "6721759436247056",
+	"updateTime": "2025-05-19 11:41:51"
+}
+
+```
+
+
+
+### 设备登录事件
+
+<Note> 设备登录时转发登录事件 </Note>
+
+主题
+
+
+ >  /sansan/data/forward/testdeveloper/testtenant
+
+
+
+
+消息体
+
+
+```
+{
+	"data": {
+		"source": "platform"
+	},
+	"deptId": "6f00c54c-8c24-4f63-8235-285e0b64fd00",
+	"devid": "AIM2ae36b7d3f10c4d0",
+	"from": "AIM2ae36b7d3f10c4d0",
+	"msgType": "login",
+	"sn": "5697416777559359",
+	"updateTime": "2025-08-26 10:44:50"
+}
+
+```
+
+### 设备登出事件
+
+<Note> 设备登出时转发登出事件 </Note>
+
+
+
+主题
+
+
+ >  /sansan/data/forward/testdeveloper/testtenant
+
+
+
+
+消息体
+
+```
+{
+	"data": {
+	},
+	"devid": "AIM8986ebad77f59250",
+	"from": "AIM8986ebad77f59250",
+	"msgType": "logout",
+	"sn": "6721759436247056",
+	"updateTime": "2025-05-19 11:41:51"
+}
+
+```
+
+### 设备创建事件
+
+<Note> 添加设备触发设备创建事件转发 </Note>
+
+
+主题
+
+
+ >  /sansan/data/forward/testdeveloper/testtenant
+
+
+
+
+消息体
+
+
+```
+{
+	"data": {},
+	"devid": "AIM9f9f9c51aebd6e31",
+	"msgType": "deviceCreate",
+	"productCode": "ATU-SE_V1.0.0.20250428_20250520170543",
+	"sn": "5471608976677767"
+}
+
+```
+
+### 设备删除事件
+
+<Note> 删除设备触发设备删除事件转发 </Note>
+
+
+主题
+
+
+ >  /sansan/data/forward/testdeveloper/testtenant
+
+
+
+
+消息体
+
+
+```
+{
+	"data": {},
+	"devid": "AIM9d5c6159d5d6b1ac",
+	"msgType": "deviceDelete",
+	"sn": "4857301751356631"
+}
+```
+
+### 设备修改事件
+
+<Note> 修改设备基本信息触发设备修改事件转发 </Note>
+
+
+主题
+
+
+ >  /sansan/data/forward/testdeveloper/testtenant
+
+
+
+
+消息体
+
+
+```
+{
+	"data": {},
+	"devid": "AIM9f9f9c51aebd6e31",
+	"msgType": "deviceUpdate",
+	"productCode": "ATU-SE_V1.0.0.20250428_20250520170543",
+	"sn": "5471608976677767"
+}
+
+```
+
+### 设备控制响应
+
+
+<Note> 下发设备控制命令后，如设备响应，则触发设备响应转发，例如重启 </Note>
+
+
+主题
+
+
+ >  /sansan/data/forward/testdeveloper/testtenant
+
+
+
+
+消息体
+
+
+```
+{
+	"data": {
+		"code": 200,
+		"funcName": "reboot",
+		"msgType": "funcAck",
+		"sid": 25004
+	},
+	"devid": "AIM07BD776AA0957B00",
+	"msgType": "funcAck",
+	"sn": "ATUSEL2505280005",
+	"updateTime": "2025-08-26 10:47:33"
+}
+
+```
