@@ -26,13 +26,13 @@
             "group": "HTTP API",
             "openapi": "api/api.openapi.json",
             "pages": [
-              "api/quickstart"
+              "api/info"
             ]
           },
           {
             "group": "转发 API",
 			      "pages": [
-			        "forward/quickstart",
+			        "forward/info",
               "forward/detail"
             ]
           }
