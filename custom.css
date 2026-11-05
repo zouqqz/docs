@@ -90,9 +90,18 @@ a:has(svg.nav-logo)::after {
   background: #3b82f6;
 }
 
-/* ===== 侧边栏背景：浅色 #fafafa（暗色模式保持默认深色） ===== */
+.dark .list-none a.text-primary .rounded-md svg,
+.dark .list-none a:hover .rounded-md svg {
+  background: rgb(var(--primary-light));
+}
+
+/* ===== 侧边栏背景：浅色 #fafafa，暗色模式用 --color-black ===== */
 nav[data-layout-item="sidebar"] {
   background: #fafafa;
+}
+
+.dark nav[data-layout-item="sidebar"] {
+  background: var(--color-black);
 }
 
 #navigation-items {

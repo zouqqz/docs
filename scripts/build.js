@@ -24,7 +24,8 @@ const shouldDelete = [
   '.gitignore', 'README.md', 'serve.js',
   'Start Docs.bat', 'Start Docs.command',
   'export.zip', 'docs.json', 'package.json', 'pnpm-lock.yaml', 'info.mdx',
-  'scripts', 'dist' // 'dist' removes the stale nested build output bundled into the zip
+  'dist' // 'dist' removes the stale nested build output bundled into the zip
+  // NOTE: keep 'scripts' — exported HTML references /scripts/fix-export-paths.js
 ];
 for (const item of shouldDelete) {
   const itemPath = path.join(DIST_DIR, item);

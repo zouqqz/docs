@@ -36,6 +36,13 @@ for (const file of htmlFiles) {
   // Also fix the __mintAssets default in mint-entry script
   fixed = fixed.replace(/globalThis\.__mintAssets\|\|"\."/g, 'globalThis.__mintAssets||"/_mintlify/assets/"');
 
+  // Rewrite lazy-chunk URLs that mint export points at the bundled localhost
+  // cache (/_mintlify/custom/localhost/<hash>/dist/...). build.js deletes that
+  // folder, so these URLs must be remapped to the real files, otherwise every
+  // lazy chunk 404s and the server returns HTML -> "Unexpected token '<'".
+  fixed = fixed.replace(/\/_mintlify\/custom\/localhost\/[0-9a-f]+\/dist\/_mintlify\/assets\//g, '/_mintlify/assets/');
+  fixed = fixed.replace(/\/_mintlify\/custom\/localhost\/[0-9a-f]+\/(dist\/)?/g, '/');
+
   if (fixed !== content) {
     fs.writeFileSync(file, fixed, 'utf-8');
     changed++;
