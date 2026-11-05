@@ -43,6 +43,14 @@ for (const file of htmlFiles) {
   fixed = fixed.replace(/\/_mintlify\/custom\/localhost\/[0-9a-f]+\/dist\/_mintlify\/assets\//g, '/_mintlify/assets/');
   fixed = fixed.replace(/\/_mintlify\/custom\/localhost\/[0-9a-f]+\/(dist\/)?/g, '/');
 
+  // Patch Mintlify module loading bug: swap() creates <script> without type="module",
+  // causing "Cannot use import statement outside a module" errors for lazy chunks.
+  // Inject as early as possible, right after <head>, before Mintlify's inline script runs.
+  fixed = fixed.replace(
+    '<head>',
+    '<head><script>(function(){var _ce=document.createElement;document.createElement=function(t){var el=_ce.apply(this,arguments);if(t==="script"){el.type="module"}return el}})();</script>'
+  );
+
   if (fixed !== content) {
     fs.writeFileSync(file, fixed, 'utf-8');
     changed++;
