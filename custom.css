@@ -67,7 +67,7 @@ a:has(svg.nav-logo)::after {
 #sidebar [aria-current="true"],
 #sidebar a.active,
 #sidebar li.active,
-#sidebar-content li[data-active] > a,
+#sidebar-content li[data-active]>a,
 #sidebar a[data-active],
 .nav-anchor[aria-current] {
   background-color: transparent !important;
@@ -88,4 +88,22 @@ a:has(svg.nav-logo)::after {
 .list-none a.text-primary .rounded-md svg,
 .list-none a:hover .rounded-md svg {
   background: #3b82f6;
+}
+
+/* ===== 侧边栏背景：浅色 #fafafa（暗色模式保持默认深色） ===== */
+nav[data-layout-item="sidebar"] {
+  background: #fafafa;
+}
+
+#navigation-items {
+  padding-left: 15px;
+}
+
+#navigation-items>ul.list-none+ul.sidebar-group {
+  border-top: 2px dashed rgb(var(--gray-200));
+  padding-top: 6px;
+}
+
+#navigation-items ul.sidebar-group+div {
+  margin-top: 6px;
 }
