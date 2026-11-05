@@ -1,0 +1,91 @@
+/* 三三云文档自定义样式（Mintlify 自动加载内容目录下所有 .css 文件，无需引入） */
+
+/* ===== 内容列定宽：mint 主题默认不限宽，用官方变量固定阅读列宽度，
+   避免切换不同菜单页（文档页 / API 接口页）时内容区宽度跳变 ===== */
+:root {
+  --content-width: 768px;
+}
+
+/* ===== 滚动条槽位恒定（页面宽度跳变的根因修复） =====
+   内容长的页面有滚动条、内容短的页面（如更新记录）没有，
+   Windows 经典滚动条约占 17px，切换页面时内容区整体左右跳动。
+   scrollbar-gutter: stable 让滚动条槽位始终保留，布局不再抖动。 */
+html {
+  scrollbar-gutter: stable;
+}
+
+/* ===== Logo：纯图形，高 30px（Mintlify 默认 nav-logo 为 h-7 / 28px） ===== */
+img.nav-logo,
+svg.nav-logo,
+.nav-logo img,
+.nav-logo svg {
+  height: 30px !important;
+  width: auto !important;
+  max-width: none !important;
+}
+
+/* ===== 防换行：logo 容器强制单行 flex 排列 ===== */
+a:has(img.nav-logo),
+a:has(svg.nav-logo),
+.nav-logo:not(img):not(svg),
+a.nav-logo {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  align-items: center;
+  white-space: nowrap !important;
+  gap: 10px;
+}
+
+/* ===== 系统标题：与 logo 解耦，独立文字渲染在 logo 右侧，20px =====
+   Mintlify 设置 logo 后导航栏只渲染 logo 图片，不显示站点名称文字，
+   因此用 ::after 注入标题文字，字号/字重独立于 logo 控制。 */
+a.nav-logo::after,
+.nav-logo:not(img):not(svg)::after,
+a:has(img.nav-logo)::after,
+a:has(svg.nav-logo)::after {
+  content: "三三云平台";
+  font-size: 20px !important;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+/* ===== 暗色模式：logo 为黑色 PNG，反色为白色保证可见 ===== */
+.dark img.nav-logo,
+.dark svg.nav-logo,
+.dark .nav-logo img,
+.dark .nav-logo svg {
+  filter: invert(1) brightness(1.2);
+}
+
+/* ===== 导航选中态：去掉背景色块，仅保留 icon 颜色 + 菜单文字颜色 =====
+   注意：只置空选中项自身的 background-color，
+   不使用 background-image:none、不使用 * 子元素通配，
+   否则会抹掉 Mintlify 以 background/mask 方式渲染的 icon。 */
+#sidebar [aria-current="page"],
+#sidebar [aria-current="true"],
+#sidebar a.active,
+#sidebar li.active,
+#sidebar-content li[data-active] > a,
+#sidebar a[data-active],
+.nav-anchor[aria-current] {
+  background-color: transparent !important;
+}
+
+/* ===== 侧边栏交互 hover：用极浅的主色替代默认深色 pill 背景 ===== */
+#sidebar a:hover,
+#sidebar a:focus-visible,
+#sidebar [role="link"]:hover {
+  background-color: rgba(59, 130, 246, 0.06) !important;
+}
+
+.list-none a .rounded-md {
+  background: transparent !important;
+
+}
+
+.list-none a.text-primary .rounded-md svg,
+.list-none a:hover .rounded-md svg {
+  background: #3b82f6;
+}

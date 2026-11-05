@@ -1,53 +1,51 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "willow",
-  "name": "三三云文档",
+  "theme": "mint",
+  "name": "三三云平台",
   "logo": {
-    "dark": "/logo/dark.svg",
-    "light": "/logo/light.svg"
+    "light": "/logo/logo.png",
+    "dark": "/logo/logo.png"
   },
   "favicon": "/favicon.svg",
   "colors": {
-     "primary": "#3b82f6"
+    "primary": "#3b82f6"
   },
   "navigation": {
-    "tabs": [
+    "anchors": [
       {
-        "tab": "平台介绍",
+        "anchor": "平台介绍",
         "pages": [
           "platform/info",
           "platform/arch"
         ]
       },
       {
-        "tab": "API 文档",
-        "groups": [
-          {
-            "group": "HTTP API",
-            "openapi": "api/api.openapi.json",
-            "pages": [
-              "info"
-            ]
-          },
-          {
-            "group": "转发 API",
-			      "pages": [
-			        "forward/info",
-              "forward/detail"
-            ]
-          }
-      
+        "anchor": "快速开始",
+        "pages": [
+          "api/info"
         ]
       },
       {
-        "tab": "使用指南",
-        "href": "https://alidocs.dingtalk.com/i/p/gBVzxNVxovbMmOao"
+        "anchor": "数据转发",
+        "pages": [
+          "forward/info",
+          "forward/detail"
+        ]
       },
       {
-        "tab": "更新记录",
+        "anchor": "API 参考",
+        "openapi": "/api/api.openapi.json"
+      },
+      {
+        "anchor": "更新记录",
         "pages": [
-              "changelog/changelog"
-            ]
+          "changelog/changelog"
+        ]
+      },
+      {
+        "anchor": "使用指南",
+        "icon": "book-open",
+        "href": "https://alidocs.dingtalk.com/i/p/gBVzxNVxovbMmOao"
       }
     ]
   }
