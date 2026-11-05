@@ -1,0 +1,15 @@
+{
+  "name": "mint-doc",
+  "version": "1.0.0",
+  "description": "三三云平台 · 文档站",
+  "scripts": {
+    "dev": "npx mint dev --disable-prefetch --disable-openapi",
+    "build": "node scripts/build.js"
+  },
+  "homepage": "https://github.com/zouqqz/docs#readme",
+  "pnpm": {
+    "overrides": {
+      "@mintlify/prebuild": "1.0.1515"
+    }
+  }
+}
